@@ -4,6 +4,9 @@
 
 This is the same as the antoine folder in leaf_model, which is the current model that the lab is using.
 
+The parameters of the model are kept as the WT model in the paper (Fig 7C) except:
+nu = 0.45
+ElastCoefTimeVar = 1 (unable to use ElastCoefTimeVar < 1 with Antoine's modification)
 
 
 ///////////////////////////////////////////////////////////
