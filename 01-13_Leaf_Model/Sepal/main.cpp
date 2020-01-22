@@ -153,6 +153,12 @@ while (step<maxstep && !(EndSimul)){
 	// Elasticity distribution computation
 	CurrElastMean = int2d(sepal)(Elastxyh)/int2d(sepal)(1.);
 	CurrElastSd = int2d(sepal)((Elastxyh-CurrElastMean)^2.)/int2d(sepal)(1.);
+
+	cout << "ElastMean: " << ElastMean << endl;
+	cout << "ElastSd:   " << ElastSd << endl;
+	cout << "CurrElastMean: " << CurrElastMean << endl;
+	cout << "CurrElastSd:   " << CurrElastSd << endl;
+
 	for (int i=0;i<sepal.nv;i++){
 		// Elast update
 		CurrElastV = Elastxyh(sepal(i).x, sepal(i).y);
@@ -196,8 +202,10 @@ while (step<maxstep && !(EndSimul)){
 			fAheight = fAheight - fAspeed;
 		}
 		cout << "height front arrest limit " << fAheight << endl;
-		if (ymax > frontArrHeightIni){
-			fAActivated = 1;
+		if (fAActivated == 0){
+			if (ymax > fAheight){
+				fAActivated = 1;
+			}
 		}
 	}
 		// save the picture
