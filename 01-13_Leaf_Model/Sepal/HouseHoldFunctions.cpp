@@ -130,7 +130,8 @@ func real prefa(real Dens, real DifRelEl, real Rhz, real dRho){
 	// 	Prefa = 1.0/(DifRelEl*Dens);
 	// }
 	
-	return Prefa;
+	return 1;
+	//return Prefa;
 }
 
 
