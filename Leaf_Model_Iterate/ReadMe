@@ -3,10 +3,10 @@
 ///////////////////////////////////////////////////////////
 
 ./Iterate:
-Changing the functions of the response curve
+Implementing the arrest front (fAElastFactor = 10)
 
 ./Iterate_previous_version:
-Adding antoine's bash code
+Changing the functions of the response curve, and make parameters (i and j) tunable
 
 Earlier versions:
 See Github
@@ -32,8 +32,14 @@ Valuable runs should be saved in ./Runs folder
 
 >>>>>>>>>>>>> How to run <<<<<<<<<<<<<<
 1. Edit params_create.sh and run it to create a list of parameter combinations (factor crossings), which is params.txt
-2. Edit and run Repeat.sh which will use values stored in Params.txt
-3. Save valuable plots and source in ./Runs folder
+2. Edit Repeat.sh which will use values stored in Params.txt
+	How many parameters will be used? i, j, k
+	Allow variability? D constant or changing
+3. Edit ./Source/MecaParam.cpp
+	Comment out the parameters to investigate
+	Remove the comment marks of the parameters that has been investigated last time
+4. Run Repeat.sh
+5. Save valuable plots and source in ./Runs folder
 
 
 
@@ -43,8 +49,8 @@ Valuable runs should be saved in ./Runs folder
 ///////////////////////////////////////////////////////////
 
 The parameters of the model are kept as the WT model in the paper (Fig 7C, see below) except:
-frontArrHeightIni = 4 (instead of 3, so that the leaves are better developed)
-TriangleSize = 1/3.5 (instead of 1/5, to avoid segmentation fault)
+frontArrHeightIni = 5 (instead of 3, so that the leaves are better developed)
+TriangleSize = 1/4. (instead of 1/5, to avoid segmentation fault)
 nu = 0.45
 ElastCoefTimeVar = 1 (unable to use ElastCoefTimeVar < 1 with Antoine's modification)
 

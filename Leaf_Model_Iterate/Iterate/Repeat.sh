@@ -3,7 +3,7 @@
 # Cleaning garbage
 rm -r Output_Summary
 mkdir Output_Summary
-mkdir Output_Summary/Mesh
+mkdir Output_Summary/Elast
 mkdir Output_Summary/Density
 
 # ... faire pareil pour toutes les variables
@@ -12,7 +12,7 @@ mkdir Output_Summary/Density
 # D is also used as the seed number in main.cpp
 D=0
 Dmax=$(($(cat params.txt | wc -l)-1))
-while read -r i j
+while read -r i j k
 do
 
 	# if D is zero (reading the headline), create variable names
@@ -20,16 +20,17 @@ do
 	then
 		iName=${i}
 		jName=${j}
+		kName=${k}
 		D=$((1+$D))
 		continue
 	fi
 
 	# Cleaning garbage
-	rm -r ${D}_${i}_${j}
+	rm -r ${D}_${i}_${j}_${k}
 
 	# Creating new directories
-    mkdir ${D}_${i}_${j}
-    cd ${D}_${i}_${j}
+    mkdir ${D}_${i}_${j}_${k}
+    cd ${D}_${i}_${j}_${k}
     mkdir Plot
 	mkdir Plot/Anis
 	mkdir Data
@@ -65,6 +66,7 @@ do
 	# Parameters to look at
 	echo "real ${iName}=${i};" >> Sepal/main.cpp
 	echo "real ${jName}=${j};" >> Sepal/main.cpp
+	echo "real ${kName}=${k};" >> Sepal/main.cpp
 
 	# Paste the end
 	cat ../Source/End.cpp >> Sepal/main.cpp
@@ -73,15 +75,15 @@ do
 	cd Sepal
 	FreeFem++-nw main.cpp
 
-	# Summarize output by picking a mid and final graph in Mesh
-	cd ../Plot/Mesh
+	# Summarize output by picking a mid and final graph in Elasticity
+	cd ../Plot/Elast
 	mid=$(($(ls | sort -n | wc -l)/2))
 	ls | sort -n > tmp1
 	tail -n 1 tmp1 > tmp2
 	head -n $mid tmp1 | tail -n 1 >> tmp2
 	while read name
 	do
-		cp $name ../../../Output_Summary/Mesh/
+		cp $name ../../../Output_Summary/Elast/${D}_${i}_${j}_${k}_${name}
 	done < tmp2
 
 	# Also pick Density
@@ -92,7 +94,7 @@ do
 	head -n $mid tmp1 | tail -n 1 >> tmp2
 	while read name
 	do
-		cp $name ../../../Output_Summary/Density/
+		cp $name ../../../Output_Summary/Density/${D}_${i}_${j}_${k}_${name}
 	done < tmp2
 
 	# Iteration

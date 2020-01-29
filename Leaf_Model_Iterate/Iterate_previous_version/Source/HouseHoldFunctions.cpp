@@ -124,33 +124,34 @@ func real GetElastVert(int i, real ElastMean, real ElastSd, real CurrElastMean, 
 // Response function to growth factor
 func real prefa(real Dens, real RelElFactor, real Rhz, real dRho, int prefaCurve){
 
+	// Prefa is a unitless, monotonously non-decreasing function of Dens from -1 to 1
 	real Prefa;
 	
-	//>> Tanh function
+	//>> Tanh function, note that -1 is not reached
 	if (prefaCurve == 1){
-		Prefa = 1+RelElFactor*(1-tanh((Dens-Rhz)/dRho));
+		Prefa = tanh((Dens-Rhz)/dRho);
 	}
 
 	//>> Linear function with plateau
 	else if (prefaCurve == 2){
-		Prefa = 1 + RelElFactor;
+		Prefa = min(1.0, 2*Dens/Rhz - 1);
 	}
 
 	//>> Step function
 	else if (prefaCurve == 3){
 		if (Dens >= Rhz){
-			Prefa = 1.0/(RelElFactor*Dens);
+			Prefa = 1.0;
 		}
-		else Prefa = 1;
+		else Prefa = -1.0;
 	}
 
-	//>> Hill's function, default
+	//>> Hill's function, default. If dRho > 10, use step function instead.
 	else{
-		Prefa = 1;
+		Prefa = 2 * pow(Dens,dRho) / (pow(Dens,dRho)+pow(Rhz,dRho)) - 1;
 	}
 
-	// Return value
-	return Prefa;
+	// The return value is a multiplicative factor on elasticity
+	return exp(-RelElFactor*Prefa);
 }
 
 

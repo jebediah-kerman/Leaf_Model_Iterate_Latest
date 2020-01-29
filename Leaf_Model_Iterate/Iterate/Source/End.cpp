@@ -142,12 +142,17 @@ while (step<maxstep && !(EndSimul)){
 	cout << "CurrElastSd:   " << CurrElastSd << endl;
 
 	for (int i=0;i<sepal.nv;i++){
+		
 		// Elast update
 		CurrElastV = Elastxyh(sepal(i).x, sepal(i).y);
 		CurrDensityV = Rho(sepal(i).x, sepal(i).y);
 		ElastVertices(i) = prefa(CurrDensityV, RelElFactor, Rhz, dRho, prefaCurve)*GetElastVert(i, ElastMean, ElastSd, CurrElastMean, CurrElastSd, MinElast, CurrElastV, ElastCoefTimeVar, sepal);
-		// ElastVertices(i) = GetElastVert(i, ElastMean, ElastSd, CurrElastMean, CurrElastSd, MinElast, CurrElastV, ElastCoefTimeVar, sepal);
 		DensityVertices(i) = CurrDensityV;
+
+		// If a vertice is beyond the arrest front, increase its elasticity
+		if(sepal(i).y > fAheight){
+			ElastVertices(i) = ElastVertices(i) * fAElastFactor;
+		}
 	}
 
   // Update of the xyh data
