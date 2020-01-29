@@ -1,0 +1,42 @@
+///////////////////////////////////////////////////////////
+////////////////// Notes on this folder ///////////////////
+///////////////////////////////////////////////////////////
+
+Antoine wrote a bash code that allows the program to run for many times automatically.
+Essentially, in the folder Iterate, you run Repeat.sh, and the code copies some code in Repeat.sh to the beginning of ./Source/End.cpp to form Main.cpp, and it copies all other codes in the Source folder as well. 
+
+The summary of output of each bash run is in Output_Summary, including:
+good_output.txt that shows the final arrest front height (value <0 indicate that the leaf fully extends)
+Mesh folder that include the mesh of half-way and final shape of each FreeFEM++ run
+
+The parameters of the model are kept as the WT model in the paper (Fig 7C, see below) except:
+nu = 0.45
+ElastCoefTimeVar = 1 (unable to use ElastCoefTimeVar < 1 with Antoine's modification)
+
+
+///////////////////////////////////////////////////////////
+////////////////// Parameters of Fig 7C ///////////////////
+///////////////////////////////////////////////////////////
+
+Var	Meaning				Paper-recommended value
+
+P	Turgor pressure, constant.	0.5 MPa
+
+ME	Young's Modulus, mean		3.27 MPa (estimated from AFM)
+SE	Young's Modulus, SD		2.7 MPa
+TE	Young's Modulus, minimum	0.1 MPa
+nu	Poisson's ratio			0.48
+Anis	Anisotropy			0.2
+rho	Non-dimensional modulus		0.5
+
+ML	Arrest front, threshold, mean	3 or 2.7
+SL	Arrest front, threshold, SD	0.05 or 0.5
+d	Arrest front, propagation rate	0.05
+
+TriangleSize
+	Size of the mesh		1/1.5, 1/5, or 1/3.5
+
+
+
+
+
