@@ -1,12 +1,12 @@
 # Create heading
-echo frontArrHeightIni$'\t'fAspeed$'\t'fAElastFactor > params.txt
+echo fAElastFactor$'\t'dRho$'\t'junk > params.txt
 
 # Create parameter list
-for i in 2 4 6
+for i in 2. 3. 5.
 do
-	for j in 0.025 0.05 0.1
+	for j in 2 3 4
 	do
-		for k in 1. 2. 10.
+		for k in 1
 		do
 			echo ${i}$'\t'${j}$'\t'${k} >> params.txt
 		done

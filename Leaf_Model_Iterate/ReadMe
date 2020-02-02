@@ -3,10 +3,10 @@
 ///////////////////////////////////////////////////////////
 
 ./Iterate:
-Evaluation using R
+Tuning of AF and Hill parameters
 
 ./Iterate_previous_version:
-Evaluation; Non-scaled plots
+Tuning of AF and Hill parameters
 
 Earlier versions:
 See Github
