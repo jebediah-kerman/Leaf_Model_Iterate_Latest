@@ -138,16 +138,19 @@ while (step<maxstep && !(EndSimul)){
 
 	cout << "ElastMean: " << ElastMean << endl;
 	cout << "ElastSd:   " << ElastSd << endl;
-	cout << "CurrElastMean: " << CurrElastMean << endl;
-	cout << "CurrElastSd:   " << CurrElastSd << endl;
 
 	for (int i=0;i<sepal.nv;i++){
+		
 		// Elast update
 		CurrElastV = Elastxyh(sepal(i).x, sepal(i).y);
 		CurrDensityV = Rho(sepal(i).x, sepal(i).y);
 		ElastVertices(i) = prefa(CurrDensityV, RelElFactor, Rhz, dRho, prefaCurve)*GetElastVert(i, ElastMean, ElastSd, CurrElastMean, CurrElastSd, MinElast, CurrElastV, ElastCoefTimeVar, sepal);
-		// ElastVertices(i) = GetElastVert(i, ElastMean, ElastSd, CurrElastMean, CurrElastSd, MinElast, CurrElastV, ElastCoefTimeVar, sepal);
 		DensityVertices(i) = CurrDensityV;
+
+		// If a vertice is beyond the arrest front, increase its elasticity
+		if(sepal(i).y > fAheight){
+			ElastVertices(i) = ElastVertices(i) * fAElastFactor;
+		}
 	}
 
   // Update of the xyh data
@@ -185,13 +188,13 @@ while (step<maxstep && !(EndSimul)){
 		}
 		cout << "height front arrest limit " << fAheight << endl;
 		if (fAActivated == 0){
-			if (ymax > fAheight){
+			if (ymax > frontArrHeightIni){
 				fAActivated = 1;
 			}
 		}
 	}
 		// save the picture
-	if (savePic==1 && step%picturestep==0){
+	if (savePic==1 && step%picturestep==1){
 		include "SavePlots.cpp"
 	}
 
@@ -204,10 +207,24 @@ while (step<maxstep && !(EndSimul)){
 
 
 
+// Calculate the criteria to prepare for output
+real[int] Values = FindxLim(sepal, sepal.nv);
+real CritAFInit = pow(ymax / frontArrHeightIni - targetMatureHeightAFInitHeightRatio, 2);
+real CritHWRatio = pow(ymax / (Values[3]-Values[1]) - targetHeightWidthRatio, 2);
+
+
 //Remplissage du fichier pour repeter meme s'il y a des erreurs
 string ferr;
 ferr = "../../Output_Summary/good_output.txt";
 ofstream fferr(ferr, append);
-fferr << simnumber << " " << fAheight << endl;
+
+
+
+
+
+
+
+
+
 
 

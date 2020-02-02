@@ -31,19 +31,37 @@ string folder;
 
 // first, saving of the mesh
 f="../Plot/Mesh/"+simnumber+"_Mesh"+numb+step+".eps";
-plot(sepal,ps=f);
+if (savePicScaled){
+	plot(sepal, ps=f);
+} else{
+	plot(sepal, ps=f, bb=savePicBounds);
+}
+
 // then, saving of the scalar plots
 for (int i=0;i<nbOutput;i++){
   //cout << i << listNamesOutput[i] << endl;
   folder = listNamesOutput[i];
   folder = GetFolder(folder);
   f="../Plot/"+folder+"/"+simnumber+"_"+listNamesOutput[i]+numb+step+".eps";
-  plot(listOutput[i],ps=f,fill=1,grey=1,value=1);
+  if (savePicScaled){
+    plot(listOutput[i],ps=f,fill=1,grey=1,value=1);
+  } else{
+    plot(listOutput[i],ps=f,fill=1,grey=1,value=1, bb=savePicBounds);
+  }
+
  }
 // then, saving the vectorial plots
 for (int i=0;i<nbOutputV;i++){
   folder = listNamesOutputV[i];
   folder = GetFolder(folder);
   f="../Plot/"+folder+"/"+simnumber+"_"+listNamesOutputV[i]+numb+step+".eps";
-  plot([listOutputV[2*i],listOutputV[2*i+1]],ps=f,value=1);
+  if (savePicScaled) {
+    plot([listOutputV[2*i],listOutputV[2*i+1]],ps=f,value=1);
+  } else{
+    plot([listOutputV[2*i],listOutputV[2*i+1]],ps=f,value=1, bb=savePicBounds);
+  }
+
  }
+
+
+

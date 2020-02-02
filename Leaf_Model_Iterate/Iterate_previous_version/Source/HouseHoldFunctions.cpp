@@ -64,8 +64,26 @@ func real[int] FindyLim(mesh sepal, int nbvertices){
 			Values[3] = sepal(i).y;
 			Values[2] = i;
 		}
-		if (sepal(i).y<Values[1]){
+		else if (sepal(i).y<Values[1]){
 			Values[1] = sepal(i).y;
+			Values[0] = i;
+		}
+	}
+	return Values;
+}
+
+// Computes xmax, xmin
+func real[int] FindxLim(mesh sepal, int nbvertices){
+	real[int] Values(4); //imin, xmin, imax, xmax
+	Values[1] = 0;
+	Values[3] = 0;
+	for (int i=0;i<nbvertices;i++){
+		if (sepal(i).x>Values[3]){
+			Values[3] = sepal(i).x;
+			Values[2] = i;
+		}
+		else if (sepal(i).x<Values[1]){
+			Values[1] = sepal(i).x;
 			Values[0] = i;
 		}
 	}

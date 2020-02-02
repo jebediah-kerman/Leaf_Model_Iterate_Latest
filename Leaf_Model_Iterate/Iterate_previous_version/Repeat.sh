@@ -3,8 +3,9 @@
 # Cleaning garbage
 rm -r Output_Summary
 mkdir Output_Summary
-mkdir Output_Summary/Mesh
+mkdir Output_Summary/Elast
 mkdir Output_Summary/Density
+mkdir Output_Summary/Displ
 
 # ... faire pareil pour toutes les variables
 # ! nombres entiers ! il faudra faire la conversion dans le .txt
@@ -12,93 +13,120 @@ mkdir Output_Summary/Density
 # D is also used as the seed number in main.cpp
 D=0
 Dmax=$(($(cat params.txt | wc -l)-1))
-while read -r i j
+
+# Header of good_output.txt
+echo SimNumber$'\t'${iName}$'\t'${jName}$'\t'${kName}$'\t'Crit_AFInit$'\t'Crit_HWRatio > Output_Summary/good_output.txt
+
+
+
+while read -r i j k
 do
 
 	# if D is zero (reading the headline), create variable names
 	if [ ${D} -eq 0 ]
 	then
-		iName=${i}
+	iName=${i}
 		jName=${j}
+		kName=${k}
 		D=$((1+$D))
 		continue
 	fi
 
-	# Cleaning garbage
-	rm -r ${D}_${i}_${j}
-
-	# Creating new directories
-    mkdir ${D}_${i}_${j}
-    cd ${D}_${i}_${j}
-    mkdir Plot
-	mkdir Plot/Anis
-	mkdir Data
-	mkdir Plot/Displ
-	mkdir Plot/Elast
-	mkdir Plot/Matrix
-	mkdir Plot/Mesh
-	mkdir Plot/RotMat
-	mkdir Plot/Stress
-	mkdir Plot/Density
-	mkdir Sepal
-
-	# copie des fichiers sauves dans la source
-	cp ../Source/*.cpp Sepal/
-	echo "                                                 "
-	echo "                                                 "
-	echo "                                                 "
-	echo "                                                 "
-	echo "                                                 "
-	echo "                                                 "
-	echo "                                                 "
-	echo "Generation du code"
-	echo "Valeur de Repetition    $D"
-	echo "                                                 "
-
-	# ecrire dans le fichier
-	#echo "include 'iostream'" > Sepal/main.cpp
-	#echo "include 'cfloat'" >> Sepal/main.cpp
-	#echo "using namespace std;" >> Sepal/main.cpp
-	echo "int simnumber=$D;" > Sepal/main.cpp
-	echo "int seed=$D;" >> Sepal/main.cpp
-
-	# Parameters to look at
-	echo "real ${iName}=${i};" >> Sepal/main.cpp
-	echo "real ${jName}=${j};" >> Sepal/main.cpp
-
-	# Paste the end
-	cat ../Source/End.cpp >> Sepal/main.cpp
-
-	# executer le fichier
-	cd Sepal
-	FreeFem++-nw main.cpp
-
-	# Summarize output by picking a mid and final graph in Mesh
-	cd ../Plot/Mesh
-	mid=$(($(ls | sort -n | wc -l)/2))
-	ls | sort -n > tmp1
-	tail -n 1 tmp1 > tmp2
-	head -n $mid tmp1 | tail -n 1 >> tmp2
-	while read name
+	# Three replications
+	for rep in 1 2 3
 	do
-		cp $name ../../../Output_Summary/Mesh/
-	done < tmp2
 
-	# Also pick Density
-	cd ../Density
-	mid=$(($(ls | sort -n | wc -l)/2))
-	ls | sort -n > tmp1
-	tail -n 1 tmp1 > tmp2
-	head -n $mid tmp1 | tail -n 1 >> tmp2
-	while read name
-	do
-		cp $name ../../../Output_Summary/Density/
-	done < tmp2
+		# Cleaning garbage
+		rm -r ${i}_${j}_${k}_${D}
 
-	# Iteration
-    cd ../../..
-    D=$((1+$D))
+		# Creating new directories
+		mkdir ${i}_${j}_${k}_${D}
+		cd ${i}_${j}_${k}_${D}
+		mkdir Plot
+		mkdir Plot/Anis
+		mkdir Data
+		mkdir Plot/Displ
+		mkdir Plot/Elast
+		mkdir Plot/Matrix
+		mkdir Plot/Mesh
+		mkdir Plot/RotMat
+		mkdir Plot/Stress
+		mkdir Plot/Density
+		mkdir Sepal
 
+		# copie des fichiers sauves dans la source
+		cp ../Source/*.cpp Sepal/
+		echo "                                                 "
+		echo "                                                 "
+		echo "                                                 "
+		echo "                                                 "
+		echo "                                                 "
+		echo "                                                 "
+		echo "                                                 "
+		echo "Generation du code"
+		echo "Valeur de Repetition    $D"
+		echo "                                                 "
+
+		# ecrire dans le fichier
+		#echo "include 'iostream'" > Sepal/main.cpp
+		#echo "include 'cfloat'" >> Sepal/main.cpp
+		#echo "using namespace std;" >> Sepal/main.cpp
+		echo "int simnumber=$D;" > Sepal/main.cpp
+		echo "int seed=$D;" >> Sepal/main.cpp
+
+		# Parameters to look at
+		echo "real ${iName}=${i};" >> Sepal/main.cpp
+		echo "real ${jName}=${j};" >> Sepal/main.cpp
+		echo "real ${kName}=${k};" >> Sepal/main.cpp
+
+		# Paste the end
+		cat ../Source/End.cpp >> Sepal/main.cpp
+
+		# Paste additional outputs
+		echo fferr\ \<\<\ \"${D}\\t${i}\\t${j}\\t${k}\\t\"\ \<\<\ CritAFInit\ \<\<\ \"\\t\"\ \<\<\ CritHWRatio\ \<\<\ endl\; >> Sepal/main.cpp
+
+		# executer le fichier
+		cd Sepal
+		FreeFem++-nw main.cpp
+
+		# Summarize output by picking a mid and final graph in Elasticity
+		cd ../Plot/Elast
+		mid=$(($(ls | sort -n | wc -l)/2))
+		ls | sort -n > tmp1
+		tail -n 1 tmp1 > tmp2
+		## head -n $mid tmp1 | tail -n 1 >> tmp2	# Output mid-point?
+		while read name
+		do
+			cp $name ../../../Output_Summary/Elast/${i}_${j}_${k}_${D}_${name}
+		done < tmp2
+
+		# Also Density
+		cd ../Density
+		mid=$(($(ls | sort -n | wc -l)/2))
+		ls | sort -n > tmp1
+		tail -n 1 tmp1 > tmp2
+		## head -n $mid tmp1 | tail -n 1 >> tmp2	# Output mid-point?
+		while read name
+		do
+				cp $name ../../../Output_Summary/Density/${i}_${j}_${k}_${D}_${name}
+		done < tmp2
+
+		# Also Displ
+		cd ../Displ
+		mid=$(($(ls | sort -n | wc -l)/2))
+		ls | sort -n > tmp1
+		tail -n 1 tmp1 > tmp2
+		## head -n $mid tmp1 | tail -n 1 >> tmp2	# Output mid-point?
+		while read name
+		do
+			cp $name ../../../Output_Summary/Displ/${i}_${j}_${k}_${D}_${name}
+		done < tmp2
+
+		# Iteration
+	    cd ../../..
+	    D=$((1+$D))
+
+	done
 done < params.txt
 
 

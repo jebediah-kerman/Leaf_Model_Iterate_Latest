@@ -3,10 +3,10 @@
 ///////////////////////////////////////////////////////////
 
 ./Iterate:
-Implementing the arrest front (fAElastFactor = 10)
+Evaluation using R
 
 ./Iterate_previous_version:
-Changing the functions of the response curve, and make parameters (i and j) tunable
+Evaluation; Non-scaled plots
 
 Earlier versions:
 See Github
@@ -40,7 +40,7 @@ Valuable runs should be saved in ./Runs folder
 	Remove the comment marks of the parameters that has been investigated last time
 4. Run Repeat.sh
 5. Save valuable plots and source in ./Runs folder
-
+6. The output is in good_output.txt. Run good_output_process.R to get the first few best parameter combinations
 
 
 
