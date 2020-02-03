@@ -1,0 +1,16 @@
+Branch
+Decreasing anisotropy
+Shuyao Kong
+2020-02-02
+
+Try decreasing anisotropy from AnisStart = 0.8 all the way down to AnisEnd = 0.2
+Let anisotropy at height 0 be AnisStart and anisotropy at height frontArrHeightIni be (AnisStart+AnisEnd)/2, and let anisotropy decrease linearly with height (minimum is AnisEnd)
+
+Values tried:
+AnisStart = 0.8, 0.6, 0.4
+AnisEnd = 0.2, 0.1, 0.0
+
+Finally, the values 
+AnisStart = 0.6
+AnisEnd = 0.1
+are determined to produce the shape most similar to a WT plant sepal

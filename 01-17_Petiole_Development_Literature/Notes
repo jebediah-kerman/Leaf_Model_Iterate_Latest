@@ -1,0 +1,103 @@
+
+############### General Information ############################
+
+Lateral outgrowth of the blade requires the juxtaposition of adaxial and abaxial identities
+	Mutations that impair adaxial leaf fate can result in patches of abaxial tissue misplaced on the adaxial side, capable of forming new boundaries
+
+Arabidopsis petioles express a number of lateral organ boundary markers (BOP1/2, AS2, KNAT6)
+	suggesting that petioles are an extension of the boundary where growth is restricted
+
+
+
+
+
+############### BOP Genes in Leaf Architecture #################
+
+A transcription factor that does not have a DNA-binding domain; require the help of TGA1 and TGA4 for DNA binding
+
+Expression:
+BOP1 and BOP2 are expressed at the base of developing Arabidopsis rosette leaves and are largely redundant
+
+Mutant:
+In Arabidopsis bop1;bop2 double mutants:
+	1. KNOX genes are re-activated after leaf initiation, just like in compound leaves
+	2. Growth process:
+		proximal-distal growth of the petiole is prolonged causing elongated leaf form
+		petiole abaxialized to create a rachis-like structure
+		petiole initiates continuous blade (boundary genes not expressed) or leaflets (boundary genes expressed)
+	3. Analysis of cell division markers shows a shift of proliferative activity from the blade-petiole junction in WT to the leaf base in bop1;bop2
+	3. Stipules are absent
+
+Downstream:
+BOP1/2 activates KNOX suppressors such as AS1 and AS2, in the proximal region of the developing leaf primordia
+Serves as a lateral organ boundary gene, and promotes the expression of other boundary genes including AS2, KNAT6, ATH1
+
+Upstream: 
+BOP1/2 is inactivated by KNOX genes in developing embryonic shoot apical meristem
+	Nuclear-cytoplasm localization is a possible mechanism, probably subject to the redox status of the cell
+In rice (BOP_in_rice.pdf), miR156 promotes juvenille trait, and miR156 up-regulates BOP by targeting its inhibitor SPL
+
+
+
+
+
+
+############### CLE5 and CLE6 ###################################
+
+Expression:
+Expressed at the base of leaf primordia, adjacent to the meristem
+
+Upstream:
+Positively regulated by BOP1/2, but is not directly
+Negatively regulated by AS2 (forming an incoherent feedforward loop)
+Positively regulated by WOX1 and PRS
+
+Mutant:
+cle5;cle6 double mutant shows no obvious leaf phenotype
+
+
+
+
+############### AS1 and AS2 ####################################
+
+Upstream:
+AS1 is negatively regulated by STM in SAM
+BOP1 directly binds to AS2 promoter to induce its expression
+
+Expression:
+1. In Jun 2010 paper Fig 3D, activation of BOP1 is able to activate AS2 promoter from the proximal to the distal region of the leaf
+2. Without BOP1, AS2 is only expressed at the very base of the leaf (Fig 3D 1st column; also compare Fig 4 C1 C2 and H1)
+
+Downstream:
+Forms a complex to represse KNOX activity
+
+Mutant:
+as1:
+	Shorter petiole in earlier leaves
+	Lobes in later leaves
+	Ectopic outgrowth of callus-like tissue
+
+
+
+
+
+############### JAG: Positive Regulator of Blade Outgrowth #####
+
+Gain-of-function mutants produce leafy petioles
+
+In WT, JAG expression is restricted to the blade
+In BOP1/2 mutants, JAG expression expands to the petiole
+
+Upstream:
+JAG and NUB are repressed by BOP1/BOP2 in the proximal leaf domain, and thus they are only active in the distal region
+
+
+Homolog in tomato: LYRATE
+
+Close relative: NUB 
+
+
+
+
+
+

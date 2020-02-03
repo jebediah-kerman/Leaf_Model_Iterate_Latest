@@ -1,0 +1,69 @@
+####################################################################
+#                                                                  #
+#                                                                  #
+#                     ANALYSIS OF MODEL OUTPUT                     #
+#                                                                  #
+#  author: Mathilde Dumond                                         #
+#                                                                  #
+#  Supplemental Information of the paper:                          #
+#  Variable cell growth yields reproducible organ development      #
+#  through spatiotemporal averaging                                #
+#                                                                  #
+#  Hong et al.                                                     #
+#  Dev Cell 2016                                                   #
+#                                                                  #
+####################################################################
+####################################################################
+#                                                                  #
+#                                                                  #
+# Below is the list of graphs we wish to get.                      #
+#                                                                  #
+# All the different possible graphs are in the                     #
+# 'Output_names.txt' file.                                         #
+# !! EXCEPT the 'O' ones !!                                        #
+# It is possible to add 'D' at the end of a name to get            #
+# the histogram of this quantity for the concerned time point.     #
+# ! works only if the data is of type "Scalar" ('S' in the         #
+# 'Output_names.txt' file)                                         #
+# It is also possible to add 'LOCVAR' at the end of a name to get  #
+# the local variability of this quantity for the concerned time    #
+# point. This feature can be added to a 'D' to get the plot as     #
+# well as the distribution of the local variability. This also     #
+# works only if the quantity is of type "Scalar".                  #
+# Example:                                                         #
+# Elast, ElastD                                                    #
+# All the wished graphs should be on the next lines,               #
+# separated by a coma                                              #
+#                                                                  #
+# Color and color range of the plots can be modified in the        #
+# 'Output_names.txt' file                                          #
+#                                                                  #
+####################################################################
+
+Elast, Triangles, BoundaryCoords,
+GrTrArea, GrArea, TrContour, ElastD
+
+# End ToDoGraphs # do not modify this line!
+#
+####################################################################
+#                                                                  #
+#                                                                  #
+# We can also plot quantities over time                            #
+# (only if the input is a simulation or a set of simulations       #
+# - and not a time point)                                          #
+# can be Length, Width, Area, Perim, or any data of type "Scalar"  #
+# ('S' in the 'Output_names.txt' file)                             #
+# Example:                                                         #
+# Length, Width, Area, Perim, Elast                                #
+# All the wished graphs should be on the next line,                #
+# separated by a coma                                              #
+#                                                                  #
+# 'O' data type will give a curve data = f(time);                  #
+# 'S' data type will give a graph with mean +- sd of the scalar    #
+#     for each time point                                          #
+#                                                                  #
+####################################################################
+
+Length, Width, Area, Perim, Elast
+
+# End ToDoOvTimeGraphs # do not modify this line!
