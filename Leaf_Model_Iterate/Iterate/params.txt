@@ -1,6 +1,2 @@
-Anis	junk1	junk2
+junk1	junk2	junk3
 0.	1	1
-0.1	1	1
-0.2	1	1
-0.3	1	1
-0.4	1	1

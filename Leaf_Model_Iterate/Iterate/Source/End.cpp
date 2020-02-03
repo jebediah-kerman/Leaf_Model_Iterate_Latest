@@ -82,6 +82,7 @@ fsepal1 C3h = C3;
 include "RotMat_Comput.cpp"
 
 
+
 // define the variationnal equation to solve - developped
 problem elasticity([ux,uy],[wx,wy])=
 	int2d(sepal)((
@@ -97,7 +98,7 @@ problem elasticity([ux,uy],[wx,wy])=
 problem density(Rho,w)=
 	int2d(sepal)(
 		Rho*w
-		+ D*(dx(Rho) * dx(w)+ dy(Rho) * dy(w))
+		+ Dc(y)*(dx(Rho) * dx(w)+ dy(Rho) * dy(w))
 	)
 	+ int2d(sepal)(
 		Rho*(dx(ux)+dx(uy))*w  // Ne marche pas?
@@ -147,10 +148,10 @@ while (step<maxstep && !(EndSimul)){
 		ElastVertices(i) = prefa(CurrDensityV, RelElFactor, Rhz, dRho, prefaCurve)*GetElastVert(i, ElastMean, ElastSd, CurrElastMean, CurrElastSd, MinElast, CurrElastV, ElastCoefTimeVar, sepal);
 		DensityVertices(i) = CurrDensityV;
 
-		// If a vertice is beyond the arrest front, increase its elasticity
+		/*// If a vertice is beyond the arrest front
 		if(sepal(i).y > fAheight){
-			ElastVertices(i) = ElastVertices(i) * fAElastFactor;
-		}
+			ElastVertices(i) = ElastVertices(i) * fAElastFactor;	// Increase its elasticity
+		}*/
 	}
 
   // Update of the xyh data

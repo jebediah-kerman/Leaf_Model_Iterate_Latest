@@ -174,7 +174,14 @@ func real prefa(real Dens, real RelElFactor, real Rhz, real dRho, int prefaCurve
 
 
 
-
+// Definition of how the diffusion constant is to be calculated
+func real Dc(real y){
+	if(y > fAheight){
+		return D * fADiffusionFactor;
+	} else{
+		return D;
+	}
+}
 
 
 

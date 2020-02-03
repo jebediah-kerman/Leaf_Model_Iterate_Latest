@@ -66,7 +66,7 @@ real MinElast = 100000;
 
 
  // define the anisotropy parameters
- //real Anis = .2;
+ real Anis = .2;
  real Theta = 0; // orientation of the anisotropy
 
  // Growth Front Arrest:
@@ -85,7 +85,8 @@ real fAb = randreal1();
 real fAheight = max(frontArrHeightIni + sqrt(-2*log(fAa))*cos(2*pi*fAb)*frontArrHeightIniSD, 0.01); // Box-Muller transform
 frontArrHeightIni = fAheight;
 real fAspeed = 0.1; // speed of the growth front arrest towards the bottom
-real fAElastFactor = 2.;	// The multiplicative factor on Elasticity if a point is beyond arrest front
+//real fAElastFactor = 2.;		// The multiplicative factor on Elasticity if a point is beyond arrest front
+real fADiffusionFactor = 0.; // The multiplicative factor on diffusion constant D if a point is beyond arrest front
 
 // if the simulation does not end with the growth front arrest
 // at which area the simulation ends

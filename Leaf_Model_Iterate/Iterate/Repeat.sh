@@ -33,7 +33,7 @@ do
 	fi
 
 	# Three replications
-	for rep in 1 2 3
+	for rep in 1 2
 	do
 
 		# Cleaning garbage
@@ -52,6 +52,7 @@ do
 		mkdir Plot/RotMat
 		mkdir Plot/Stress
 		mkdir Plot/Density
+		mkdir Plot/DiffusionConst
 		mkdir Sepal
 
 		# copie des fichiers sauves dans la source
