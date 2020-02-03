@@ -1,0 +1,19 @@
+Testing the effect of anisotropy on leaf shape
+Shuyao Kong
+02-02-20
+
+Specifically, I wonder if the two bulges can be eliminated by setting a low anisotropy value.
+
+Anis
+0.
+0.1
+0.2 ("WT")
+0.3
+
+Results:
+Anis=0.3 seems to produce the best shape.
+However, when changing physical parameters, we should be cautious.
+
+
+
+
