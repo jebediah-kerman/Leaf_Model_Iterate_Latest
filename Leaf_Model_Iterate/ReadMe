@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////
 
 ./Iterate:
-Addressing the hypothesis that ROS affects diffusion constant
+Plotting growth rate
 
 ./Iterate_previous_version:
 Tuning of AF and Hill parameters
