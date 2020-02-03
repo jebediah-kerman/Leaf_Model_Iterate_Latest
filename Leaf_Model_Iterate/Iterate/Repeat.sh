@@ -53,6 +53,7 @@ do
 		mkdir Plot/Stress
 		mkdir Plot/Density
 		mkdir Plot/DiffusionConst
+		mkdir Plot/GrowthRate
 		mkdir Sepal
 
 		# copie des fichiers sauves dans la source
