@@ -1,0 +1,15 @@
+Demonstration of AF
+Shuyao Kong
+02-02-20
+
+frontArrHeightIni
+6 (WT)
+4, 5 (ROS OE)
+7, 8 (ROS lacking)
+
+In the end, the selected parameters:
+6 for WT 		(run number 15)
+4 for ROS OE 		(run number 1)
+8 for ROS lacking 	(run number 20)
+
+

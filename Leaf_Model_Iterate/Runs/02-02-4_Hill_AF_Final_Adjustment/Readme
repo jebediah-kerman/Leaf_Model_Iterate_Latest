@@ -1,0 +1,23 @@
+Recursive tuning of Hill function and arrest front
+# 3, final
+Shuyao Kong
+02-02-20
+
+Previous stabilized parameters:
+frontArrHeightIni	= 6
+fAspeed 		= 0.1
+Rhz			= 0.03
+RelEl			= 10
+
+Tuning:
+fAElastFactor	= 2, 3, 5
+dRho		= 2, 3, 4
+
+Finally, these parameters are specified as:
+fAElastFactor = 2
+dRho = 3
+
+
+
+
+

@@ -1,0 +1,27 @@
+Hill function adjustment
+Shuyao Kong
+2020-01-29
+
+
+In this run, keep the response curve to growth function as Hill, and tune the parameters:
+dRho in 2, 4, 6, 99 (use the step function instead)
+Rhz in 0.01, 0.03, 0.1, 0.3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

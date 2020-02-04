@@ -1,0 +1,28 @@
+Recursive tuning of Hill function and arrest front
+# 1, arrest front
+Shuyao Kong
+01-29-20
+
+Previous Hill function parameters:
+Rhz  = 0.03
+dRho = 2.
+RelEl= 10
+
+Tuning of arrest front:
+frontArrHeightIni
+2, 4, 6
+fAspeed
+0.025, 0.05, 0.1
+fAElastFactor
+1, 2, 10
+
+Most preferrable arrest front function parameters:
+6
+0.1
+2
+
+
+
+
+
+
