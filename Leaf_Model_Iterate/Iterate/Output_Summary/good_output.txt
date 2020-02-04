@@ -1,0 +1,1 @@
+SimNumber	i	j	k	Crit_AFInit	Crit_HWRatio
