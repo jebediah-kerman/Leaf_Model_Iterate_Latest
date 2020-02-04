@@ -52,10 +52,10 @@ real MinElast = 100000;
  int prefaCurve = 4;	// Which response curve should be used? 1 for tanh, 2 for linear, 3 for step, 4 for hill (default)
  real DegRate =.1; 		// Degradation rate. It should be  0 < DegRate << 1
  real D = .1; 			// Diffusion constant. It should be 0 < D < 1
- real J = .01; 			// Inward flux at the base. It should be 0 < J < 1
+ //real J = .01; 			// Inward flux at the base. It should be 0 < J < 1
  real DensityI = 0; 	// Initial density
  real RelEl= 10.; 		// The ratio beween elasticity for very low and very high density 1 < RelEl
- real RelElFactor = log(RelEl)/2;
+ real RelElFactor = log(RelEl);
  real Rhz = .03; 		// The density for the transition from high to low density regime.
  real dRho = 3.; 		// sensitivity of the elasticity with respect to the density at the transition from low to high density regime.
  if(prefaCurve == 4){
@@ -65,13 +65,32 @@ real MinElast = 100000;
  }
 
 
+ /////////////////////////Growth inhibitor related
+ int prefbCurve = 4;	// Which response curve should be used? 1 for tanh, 2 for linear, 3 for step, 4 for hill (default)
+ real DegRateInh =.1; 	// Degradation rate. It should be  0 < DegRate << 1
+ real DInh = .1; 		// Diffusion constant. It should be 0 < D < 1
+ //real JInh = .01; 		// Inward flux at the base. It should be 0 < J < 1
+ real DensityInhI = 0; 	// Initial density
+ real RelElInh = 100.; 	// The ratio beween elasticity for very low and very high density 1 < RelEl
+ real RelElFactorInh = log(RelElInh)/2;
+ real RhzInh = .04; 	// The density for the transition from high to low density regime.
+ real dRhoInh = 20.; 	// sensitivity of the elasticity with respect to the density at the transition from low to high density regime.
+ if(prefbCurve == 4){
+ 	if(dRhoInh > 10){	// Hill function can be substituted by Step function when the power > 10
+ 		prefbCurve = 3;
+ 	}
+ }
+
+
  // define the anisotropy parameters
- real Anis = .2;
+ //real Anis = .2;
+ real AnisStart = 1.0;
+ real AnisEnd = 0.1;
  real Theta = 0; // orientation of the anisotropy
 
  // Growth Front Arrest:
  bool frontArrest = 1; // boolean: is the simulation stopping because of the growth front arrest or another factor (MaxArea)
- //real frontArrHeightIni = 6.; // so that the leaves are better developed
+ real frontArrHeightIni = 6.; // so that the leaves are better developed
  // real frontArrHeightIni = 3.; // all figures except fig 7B(ii)and fig 7D
  // real frontArrHeightIni = 2.7; // fig 7B(ii); 7D
  // real frontArrHeightIniSD = 0.; // all figures except fig 7B; fig 7C and fig 7D
@@ -84,8 +103,8 @@ real fAa = randreal1();
 real fAb = randreal1();
 real fAheight = max(frontArrHeightIni + sqrt(-2*log(fAa))*cos(2*pi*fAb)*frontArrHeightIniSD, 0.01); // Box-Muller transform
 frontArrHeightIni = fAheight;
-//real fAspeed = 0.1; // speed of the growth front arrest towards the bottom
-//real fAElastFactor = 2.;		// The multiplicative factor on Elasticity if a point is beyond arrest front
+real fAspeed = 0.1; // speed of the growth front arrest towards the bottom
+real fAElastFactor = 2.;		// The multiplicative factor on Elasticity if a point is beyond arrest front
 //real fADiffusionFactor = 0.; // The multiplicative factor on diffusion constant D if a point is beyond arrest front
 
 // if the simulation does not end with the growth front arrest

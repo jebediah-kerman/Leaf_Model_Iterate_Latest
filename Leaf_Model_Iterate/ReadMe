@@ -2,11 +2,21 @@
 ////////////////// Notes on versions //////////////////////
 ///////////////////////////////////////////////////////////
 
-./Iterate:
-Plotting growth rate
+The best version of the model is ./Iterate_branch_anis, and the best parameters are 
+AnisStart=0.6
+AnisEnd=0.1
 
-./Iterate_previous_version:
-Tuning of AF and Hill parameters
+./Iterate:
+Getting varying anis into the GF-GI model (which fails)
+
+./Iterate_last_version:
+Implementing the growth inhibitor
+
+./Iterate_branch_diffusion
+ROS blocks plasmodesmata
+
+./Iterate_branch_anis
+changing anisotropy
 
 Earlier versions:
 See Github
