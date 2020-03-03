@@ -12,12 +12,14 @@ real radius, plotsize;
 
 // all mechanical properties for the simulation - only file to be modified
 include "Meca_Param.cpp"
+include "HouseHoldFunctions.cpp"
 
 // initial shape
 plotsize=6*radius;
 step=0;
 real ymin=0;
 real ymax=radius;
+real Anis=getAnis(ymax);
 
 // compute the mesh
 border out(t=0,pi){x=radius*cos(t);y=radius*sin(t);label=1;} // half circle
@@ -33,7 +35,7 @@ fespace fsepal(sepal,P2); // P2 elements for the sepal
 fespace fsepal0(sepal,P0);
 fespace fsepal1(sepal,P1);
 
-include "HouseHoldFunctions.cpp"
+
 real area;
 int nbvertices = sepal.nv;
 real[int] ElastVertices(nbvertices);
@@ -202,6 +204,7 @@ while (step<maxstep && !(EndSimul)){
 	real[int] Values = FindyLim(sepal, sepal.nv);
 	ymin = Values[1];
 	ymax = Values[3];
+	Anis=getAnis(ymax);
 
 
 	// Computation of where is the front arrest limit now

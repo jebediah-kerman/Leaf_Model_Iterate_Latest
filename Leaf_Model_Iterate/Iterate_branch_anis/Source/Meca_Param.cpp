@@ -103,6 +103,7 @@ func savePicBounds = [[-10.,0.],[10.,20.]];
 
 // For the plots, isovalues to be plotted
 real[int] visoElast = [0.e6, 5.e6, 10.e6, 15.e6, 20.e6, 25.e6, 30.e6, 35.e6, 40.e6, 45.e6, 50.e6, 55.e6, 60.e6, 65.e6, 70.e6, 75.e6, 80.e6];
+real[int] visoGR = [0.,0.02,0.04,0.06,0.08,0.1,0.12,0.14,0.16,0.18,0.2,2.0];
 
 // Evaluation of leaf shape
 real targetMatureHeightAFInitHeightRatio = 2.;

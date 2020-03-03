@@ -1,21 +1,21 @@
 #!/bin/bash
 
 # Cleaning garbage
-rm -r Output_Summary
-mkdir Output_Summary
-mkdir Output_Summary/Elast
-mkdir Output_Summary/Density
-mkdir Output_Summary/Displ
+#rm -r Output_Summary
+#mkdir Output_Summary
+#mkdir Output_Summary/Elast
+#mkdir Output_Summary/Density
+#mkdir Output_Summary/Displ
 
 # ... faire pareil pour toutes les variables
 # ! nombres entiers ! il faudra faire la conversion dans le .txt
 # D is the total run number calculated as the number of rows in params.txt minus 1
 # D is also used as the seed number in main.cpp
-D=0
+D=3000
 Dmax=$(($(cat params.txt | wc -l)-1))
 
 # Header of good_output.txt
-echo SimNumber$'\t'i$'\t'j$'\t'k$'\t'Crit_AFInit$'\t'Crit_HWRatio > Output_Summary/good_output.txt
+#echo SimNumber$'\t'i$'\t'j$'\t'k$'\t'Crit_AFInit$'\t'Crit_HWRatio > Output_Summary/good_output.txt
 
 
 
@@ -23,7 +23,7 @@ while read -r i j k
 do
 
 	# if D is zero (reading the headline), create variable names
-	if [ ${D} -eq 0 ]
+	if [ ${D} -eq 3000 ]
 	then
 	iName=${i}
 		jName=${j}
@@ -33,7 +33,7 @@ do
 	fi
 
 	# Three replications
-	for rep in 1 2
+	for rep in 1 2 3 4 5
 	do
 
 		# Cleaning garbage

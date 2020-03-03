@@ -17,7 +17,7 @@
 //////////////////////////////////////////////////
 
 
-int nbOutput=11;
+int nbOutput=12;
 fsepal1[int] listOutput(nbOutput);
 listOutput[0] = Elastxyh;
 listOutput[1] = ARh;
@@ -30,7 +30,7 @@ listOutput[7] = A2h;
 listOutput[8] = B12h;
 listOutput[9] = C3h;
 listOutput[10] = Densityxyh;
-
+listOutput[11] = dx(ux)+dy(uy);
 
 
 int nbOutputV=1;
@@ -50,6 +50,7 @@ listNamesOutput[7] = "A2";
 listNamesOutput[8] = "B12";
 listNamesOutput[9] = "C3";
 listNamesOutput[10] = "Density";
+listNamesOutput[11] = "GrowthRate";
 
 string[int] listNamesOutputV(nbOutputV);
 listNamesOutputV[0] = "Displ";

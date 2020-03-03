@@ -1,0 +1,29 @@
+This run is an attempt to adjust the production of the growth inhibitor (at the tip) in response to the growth factor concentration.
+
+Ideally:
+The growth inhibitor is not produced or produced at very low concentration at the beginning
+Produced at high concentration in the end
+Concentration should be high even at the base, in the end
+(There is no quantified criteria of selection)
+
+The range of parameters tried:
+DInh: 0.1, 0.2, 0.4
+GI2transitionalGFconc: 0.03, 0.01, 0.003, 0.001, 0.0003, 0.0001, 0.00003, 0.00001
+
+Based on the simulation, the best parameter set is:
+DInh: 0.4
+GI2transitionalGFconc: 0.00001
+Note that this is not optimized (just "it might work")
+
+
+
+
+
+
+
+
+
+
+
+
+

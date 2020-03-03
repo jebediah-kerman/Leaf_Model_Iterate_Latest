@@ -50,7 +50,7 @@ if (savePicScaled){
 
 
 // Others
-for (int i=1;i<nbOutput;i++){
+for (int i=1;i<nbOutput-1;i++){
   //cout << i << listNamesOutput[i] << endl;
   folder = listNamesOutput[i];
   folder = GetFolder(folder);
@@ -62,6 +62,16 @@ for (int i=1;i<nbOutput;i++){
   }
 
  }
+
+  folder = listNamesOutput[nbOutput-1];
+  folder = GetFolder(folder);
+  f="../Plot/"+folder+"/"+simnumber+"_"+listNamesOutput[nbOutput-1]+numb+step+".eps";
+  if (savePicScaled){
+    plot(listOutput[nbOutput-1],ps=f,fill=1,grey=1,value=1, viso=visoGR);
+  } else{
+    plot(listOutput[nbOutput-1],ps=f,fill=1,grey=1,value=1, viso=visoGR, bb=savePicBounds);
+  }
+
 // then, saving the vectorial plots
 for (int i=0;i<nbOutputV;i++){
   folder = listNamesOutputV[i];

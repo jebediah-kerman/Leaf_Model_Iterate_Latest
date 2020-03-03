@@ -1,0 +1,11 @@
+This run tests the function of the growth inhibitor
+
+I disabled the effect of ROS and the AF. Essentially, frontArrest is set to 0.
+
+Growth is terminated when the height gain from iteration n to iteration n+1 (ygain) is smaller than a threshold (minYgain).
+
+
+
+
+
+

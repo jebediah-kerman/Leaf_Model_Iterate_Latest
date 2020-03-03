@@ -1,0 +1,21 @@
+I hypothesize that, in the situation where:
+	There is growth inhibitor 2 action (being produced where GF concentration is low)
+	The growth is terminated by the height gain less than a threshold
+	In this case, the GF and the GI interacts so that when GI concentration exceeds a threshold growth stops (no matter what concentration GF is)
+The mature size of the sepal should be
+	robust w.r.t. response curve of the tissue to the growth factor
+	un-robust w.r.t. production of the growth factor
+
+To test this, in this folder:
+	J is changed from 0.03 to
+	0.02 0.04 0.06 0.08 0.10
+
+Results: not robust
+
+
+
+
+
+
+
+

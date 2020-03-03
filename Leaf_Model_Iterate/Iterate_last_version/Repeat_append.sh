@@ -11,7 +11,7 @@
 # ! nombres entiers ! il faudra faire la conversion dans le .txt
 # D is the total run number calculated as the number of rows in params.txt minus 1
 # D is also used as the seed number in main.cpp
-D=1000
+D=1002
 #Dmax=$(($(cat params.txt | wc -l)-1))
 
 # Header of good_output.txt
@@ -23,7 +23,7 @@ while read -r i j k
 do
 
 	# if D is zero (reading the headline), create variable names
-	if [ ${D} -eq 1000 ]
+	if [ ${D} -eq 1002 ]
 	then
 	iName=${i}
 		jName=${j}
@@ -33,7 +33,7 @@ do
 	fi
 
 	# Three replications
-	for rep in 1
+	for rep in 2 3 4 5
 	do
 
 		# Cleaning garbage

@@ -1,0 +1,18 @@
+I hypothesize that, in the situation where:
+	There is no growth inhibitor action (RelElInh=1)
+	The growth is terminated by an arrest front propagating from the tip to the base
+The mature size of the sepal should be
+	un-robust w.r.t. response curve of the tissue to the growth factor
+	un-robust w.r.t. production of the growth factor
+
+To test this, in this folder:
+	Rhz is changed from 0.03 to
+	0.01 0.02 0.03 0.04 0.05
+
+
+
+
+
+
+
+

@@ -22,7 +22,7 @@
 // define the number of temporal steps
 int step, maxstep=1000;
 //size of the triangles
-real TriangleSize = 1./4.; 		// To avoid segmentation fault
+real TriangleSize = 1./3.5; 		// To avoid segmentation fault
 //real TriangleSize = 1./5.; 	// all figures except fig 2H and fig 7D
 //real TriangleSize = 1./1.5; 	// fig 2H
 //real TriangleSize = 1./3.5; 	// fig 7D
@@ -83,7 +83,9 @@ real MinElast = 100000;
 
 
  // define the anisotropy parameters
- real Anis = .2;
+ //real Anis = .2;
+ real AnisStart = 0.6;
+ real AnisEnd = 0.1;
  real Theta = 0; // orientation of the anisotropy
 
  // Growth Front Arrest:
@@ -115,11 +117,11 @@ int picturestep=5;
 
 // whether to scale the plots to screen, or plot actual sizes (specify a boundary)
 bool savePicScaled=0;
-func savePicBounds = [[-10.,0.],[10.,20.]];
+func savePicBounds = [[-10.,0.],[10.,40.]];
 
 // For the plots, isovalues to be plotted
 real[int] visoElast = [0.e6, 5.e6, 10.e6, 15.e6, 20.e6, 25.e6, 30.e6, 35.e6, 40.e6, 45.e6, 50.e6, 55.e6, 60.e6, 65.e6, 70.e6, 75.e6, 80.e6];
-real[int] visoGrowthRate = [0., 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 1.];
+real[int] visoGrowthRate = [0., 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 2.];
 
 // Evaluation of leaf shape
 real targetMatureHeightAFInitHeightRatio = 2.;

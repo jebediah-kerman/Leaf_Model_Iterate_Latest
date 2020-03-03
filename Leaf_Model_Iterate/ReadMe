@@ -7,16 +7,19 @@ AnisStart=0.6
 AnisEnd=0.1
 
 ./Iterate:
-Getting varying anis into the GF-GI model (which fails)
+Fix bug in RelElastFactor
 
 ./Iterate_last_version:
-Implementing the growth inhibitor
+Getting varying anis into the GF-GI model (which fails)
 
 ./Iterate_branch_diffusion
 ROS blocks plasmodesmata
 
 ./Iterate_branch_anis
 changing anisotropy
+
+./Iterate_branch_GI2
+re-purpose the diffusing inhibitor from the base as an inhibitor being produced whenever growth factor concentration is low, and can also diffuse (mimics miR396)
 
 Earlier versions:
 See Github
